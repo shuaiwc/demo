@@ -1,0 +1,8 @@
+keytool -genkey -alias roleta24 -keyalg RSA -validity 73100 -keystore roleta24.keystore
+keytool -importkeystore -srckeystore roleta24.keystore -destkeystore roleta24.keystore -deststoretype pkcs12
+
+
+
+roleta24.keystore
+别名:roleta24
+密码:roleta24123
