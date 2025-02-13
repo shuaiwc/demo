@@ -50,8 +50,10 @@ class ConfigProcessor:
 class CloudFrontUploader:
     def __init__(self, config_file='config.json'):
         config = load_config(config_file)
-        access_key = config['aws']['access_key']
-        secret_key = config['aws']['secret_key']
+        encoded_access_key = config['aws']['access_key']
+        encoded_secret_key = config['aws']['secret_key']
+        access_key = base64.b64decode(encoded_access_key).decode('utf-8')
+        secret_key = base64.b64decode(encoded_secret_key).decode('utf-8')
 
         self.s3_client = boto3.client(
             's3',
@@ -92,7 +94,12 @@ class CloudFrontUploader:
 class GitHubUploader:
     def __init__(self,config_file='config.json', repo_name = "190699038/h5apk"):
         config = load_config(config_file)
-        token = config['github']
+        encoded_token = config['git_token']
+        try:
+            token = base64.b64decode(encoded_token).decode('utf-8')
+        except Exception as e:
+            print(f"Error decoding token: {e}")
+            token = None
         self.token = token
         self.repo_name = repo_name
         self.headers = {
