@@ -100,6 +100,7 @@ class GitHubUploader:
         except Exception as e:
             print(f"Error decoding token: {e}")
             token = None
+        print(f"token: {token}")
         self.token = token
         self.repo_name = repo_name
         self.headers = {
@@ -310,8 +311,22 @@ class ApkProcessor:
 
     def cleanup(self):
         print("清理临时文件...")
-        shutil.rmtree(self.work_dir)
-        shutil.rmtree(self.output_dir)
+        try:
+            if self.work_dir.exists():
+                shutil.rmtree(self.work_dir)
+            else:
+                print(f"工作目录不存在: {self.work_dir}")
+
+            if self.output_dir.exists():
+                shutil.rmtree(self.output_dir)
+            else:
+                print(f"输出目录不存在: {self.output_dir}")
+        except FileNotFoundError as e:
+            print(f"文件或目录不存在: {e}")
+        except PermissionError as e:
+            print(f"权限不足: {e}")
+        except Exception as e:
+            print(f"清理过程中出现其他错误: {e}")
 
     def process(self):
         try:
