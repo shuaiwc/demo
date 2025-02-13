@@ -13,7 +13,7 @@
   "git_token": "Z2l0aHViX3BhdF8xMUFQQTVXSUEwR0ZsanBRb1V6YWpsX1NyQnJaY01uaUxPdWx0WWp0VjRmS3dqTjFORHlJeGxLWWt1ZHdnWVZEc0NHWFVWN1NQVmg5MXEyVTRu",
   "aws": {
         "access_key": "QUtJQTRBQ0xTMk8yWjNQVUhCRkc=",
-        "secret_key": "WURSTW9reFhrUDh5QlNKSHQ0NUEzYmVzQlQ=",
+        "secret_key": "WURSTW9reFhrUDh5QlNKSHQ0NUEzYmVzQlQrVGlHa0NzSjdjYWlJYQ==",
         "s3_region": "sa-east-1",
         "cloudfront_region": "us-east-1"
     }
