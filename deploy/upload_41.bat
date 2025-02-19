@@ -12,8 +12,8 @@ if not exist "%GIT_BASH_PATH%" (
     exit /b 1
 )
 REM 检查配置文件是否存在
-if not exist "upload_config.txt" (
-    echo Error: unable to find upload_config.txt
+if not exist "upload_config_file.txt" (
+    echo Error: unable to find upload_config_file.txt
     pause
     exit /b 1
 )
@@ -33,7 +33,7 @@ for /f "usebackq delims=" %%f in ("upload_config_list.txt") do (
     timeout /t 1 /nobreak > nul
 )
 
-for /f "usebackq delims=" %%f in ("upload_config.txt") do (
+for /f "usebackq delims=" %%f in ("upload_config_file.txt") do (
     set "SCP_COMMAND=scp '%%f' s41:/tmp"
     echo Executing command: !SCP_COMMAND!
     start "" "%GIT_BASH_PATH%" -c "!SCP_COMMAND!"
