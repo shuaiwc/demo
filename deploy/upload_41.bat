@@ -26,7 +26,7 @@ if not exist "upload_config_list.txt" (
 )
 
 for /f "usebackq delims=" %%f in ("upload_config_list.txt") do (
-    set "SCP_COMMAND=scp -r %%f* s41:/tmp"
+    set "SCP_COMMAND=scp -r /g/jekins/demo%%f* s41:/tmp"
     echo Executing command: !SCP_COMMAND!
     start "" "%GIT_BASH_PATH%" -c "!SCP_COMMAND!"
 
@@ -34,7 +34,7 @@ for /f "usebackq delims=" %%f in ("upload_config_list.txt") do (
 )
 
 for /f "usebackq delims=" %%f in ("upload_config_file.txt") do (
-    set "SCP_COMMAND=scp '%%f' s41:/tmp"
+    set "SCP_COMMAND=scp '/g/jekins/demo%%f' s41:/tmp"
     echo Executing command: !SCP_COMMAND!
     start "" "%GIT_BASH_PATH%" -c "!SCP_COMMAND!"
 

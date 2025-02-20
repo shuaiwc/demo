@@ -1,1 +1,1 @@
-/g/jekins/demo/deploy/test/test.txt
+/deploy/test/test.txt
